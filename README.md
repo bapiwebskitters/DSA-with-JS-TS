@@ -10,11 +10,11 @@
 
 ***Before touching DSA, make sure you’re comfortable with:***
 
-✅ Variables, Data Types, Operators
-✅ Loops and Conditionals (for, while, if-else)
-✅ Functions and Recursion
-✅ Arrays and Objects
-✅ Time and Space Complexity (Big O Notation)
+- ✅ Variables, Data Types, Operators
+- ✅ Loops and Conditionals (for, while, if-else)
+- ✅ Functions and Recursion
+- ✅ Arrays and Objects
+- ✅ Time and Space Complexity (Big O Notation)
 
 📘 Goal: Understand how to analyze the performance of code.
 
@@ -184,13 +184,14 @@ Matrix Chain Multiplication
 ### 🧩 Suggested Learning Path
 
 **Week Focus Area**
-1 Big O, Arrays, Strings
-2 Linked List, Stack, Queue
-3 Hashing, Trees
-4 Heaps, Graphs
-5 Sorting, Searching
-6 Recursion, Backtracking
-7 DP (Part 1)
-8 DP (Part 2) + Greedy
-9 Systematic Problem Solving
-10+ Advanced Topics + Projects
+
+- 1 Big O, Arrays, Strings
+- 2 Linked List, Stack, Queue
+- 3 Hashing, Trees
+- 4 Heaps, Graphs
+- 5 Sorting, Searching
+- 6 Recursion, Backtracking
+- 7 DP (Part 1)
+- 8 DP (Part 2) + Greedy
+- 9 Systematic Problem Solving
+- 10+ Advanced Topics + Projects
