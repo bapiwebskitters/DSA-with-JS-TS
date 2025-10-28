@@ -132,20 +132,20 @@ function cloneArray(arr: number[]) {
 
 ### 6. Big O Simplification Rules
 
-**Ignore constants**
+#### Ignore constants
 
 - O(2n) → O(n)
 - O(3n² + 5n) → O(n²)
 
-**Use the dominant term**
+#### Use the dominant term
 
 - O(n² + n) → O(n²)
 
-**Nested loops multiply**
+#### Nested loops multiply
 
 - Two nested loops → O(n × n) = O(n²)
 
-**Sequential code adds**
+#### Sequential code adds
 
 - Two separate loops → O(n) + O(n) = O(2n) → O(n)
 
@@ -354,63 +354,7 @@ For example, when `n = 1,000,000`:
 
 ***(You’ll often get snippets and must identify their complexity.)***
 
-```js
-for (let i = 0; i < n; i++) console.log(i);
-```
-
-➡️ Complexity?
-
-```js
-for (let i = 0; i < n; i++)
-  for (let j = 0; j < n; j++)
-    console.log(i, j);
-```
-
-➡️ Complexity?
-
-```js
-for (let i = 0; i < n; i++)
-  for (let j = 0; j < n * n; j++)
-    console.log(i, j);
-```
-
-➡️ Complexity?
-
-```js
-for (let i = 1; i < n; i *= 2)
-  console.log(i);
-```
-
-➡️ Complexity?
-
-```js
-for (let i = 0; i < n; i++)
-  for (let j = 0; j < i; j++)
-    console.log(i, j);
-```
-
-➡️ Complexity?
-
-```js
-function fun(n) {
-  if (n <= 1) return;
-  fun(n - 1);
-}
-```
-
-➡️ Complexity?
-
-```js
-function fun(n) {
-  if (n <= 1) return;
-  fun(n - 1);
-  fun(n - 1);
-}
-```
-
-➡️ Complexity?
-
-### 11
+#### 11
 
 ```js
 for (let i = 0; i < n; i++) console.log(i);
@@ -422,7 +366,7 @@ The loop runs once for each value of `i` from 0 to n − 1 → n iterations.
 Each iteration is O(1), so total = n × O(1) = **O(n)**.
 **Space:** O(1)
 
-### 12
+#### 12
 
 ```js
 for (let i = 0; i < n; i++)
@@ -437,7 +381,7 @@ Inner loop → n times per outer iteration
 Total = n × n = **n²** operations.
 **Space:** O(1)
 
-### 13
+#### 13
 
 ```js
 for (let i = 0; i < n; i++)
@@ -452,7 +396,7 @@ Inner loop: n² times
 Total = n × n² = **n³** operations.
 **Space:** O(1)
 
-### 14
+#### 14
 
 ```js
 for (let i = 1; i < n; i *= 2)
@@ -465,7 +409,7 @@ for (let i = 1; i < n; i *= 2)
 The number of iterations ≈ log₂(n).
 **Space:** O(1)
 
-### 15
+#### 15
 
 ```js
 for (let i = 0; i < n; i++)
@@ -479,7 +423,7 @@ The inner loop runs i times per outer i.
 Total work = 1 + 2 + 3 + … + (n − 1) = n(n − 1)/2 ≈ **O(n²)**.
 **Space:** O(1)
 
-### 16
+#### 16
 
 ```js
 function fun(n) {
@@ -493,7 +437,7 @@ function fun(n) {
 Recursive call reduces n by 1 each time → n levels deep.
 **Space Complexity:** O(n) (due to call stack)
 
-### 17
+#### 17
 
 ```js
 function fun(n) {
@@ -509,7 +453,7 @@ Each call spawns two subcalls, forming a binary recursion tree.
 Total ≈ 2ⁿ calls.
 **Space Complexity:** O(n) (maximum recursion depth)
 
-### ✅ Summary Table
+✅ **Summary Table**
 
 | #Q  | Code Type            | Time Complexity | Space Complexity | Notes                  |
 | --- | -------------------- | --------------- | ---------------- | ---------------------- |
@@ -524,13 +468,95 @@ Total ≈ 2ⁿ calls.
 ### 🟠 Level 3 — Comparative & Conceptual
 
 ***(These check your reasoning about growth rates.)***
-18. Between O(n) and O(n log n), which is faster for large n?
-19. Why is O(log n) often better than O(1) in real life? (Hint: caching, I/O)
-20. When can O(n²) still be acceptable?
-21. Compare Merge Sort (O(n log n)) vs Bubble Sort (O(n²)).
-22. Is it possible for an algorithm to be O(1) time but O(n) space? Give an example.
-23. What does it mean if a function has O(∞)? (Trick question — invalid)
-24. Why does Big O only measure asymptotic behavior (not exact runtime)?
+
+#### 18. Between O(n) and O(n log n), which is faster for large n?
+
+**A:** O(n) is faster.
+**Explanation:**
+Although O(n log n) grows only slightly faster, the log n factor increases total operations as n becomes large.
+However, for small n, the difference might be negligible — constant factors can make O(n log n) algorithms competitive.
+
+#### 19. Why is O(log n) often better than O(1) in real life?
+
+*(Hint: caching, I/O)*
+**A:**
+Theoretically O(1) is faster, but in real-world systems:
+O(1) operations may involve disk access, network calls, or cache misses, which are slow.
+O(log n) algorithms (like balanced trees or binary search) often use sequential, cache-friendly memory access, making them faster in practice.
+
+**Example:**
+A binary search (O(log n)) on sorted data in memory may outperform a poorly designed hash lookup (O(1)) with collisions or disk I/O.
+
+#### 20. When can O(n²) still be acceptable?
+
+**A:**
+When n is small or the algorithm runs rarely.
+If n ≤ 1000, an O(n²) algorithm may finish in milliseconds.
+Also acceptable when:
+
+- Simpler to implement.
+- Run infrequently (e.g., admin task).
+- Input size guaranteed small (e.g., fixed UI dataset).
+
+#### 21. Compare Merge Sort (O(n log n)) vs Bubble Sort (O(n²))
+
+**A:**
+
+| Aspect                 | Merge Sort              | Bubble Sort          |
+| ---------------------- | ----------------------- | -------------------- |
+| Time Complexity        | O(n log n)              | O(n²)                |
+| Space                  | O(n)                    | O(1)                 |
+| Approach               | Divide & Conquer        | Repeated swaps       |
+| Stability              | Stable                  | Stable               |
+| Real-world performance | Much faster for large n | Too slow for large n |
+
+*Conclusion: Merge Sort scales far better for large datasets.*
+
+#### 22. Is it possible for an algorithm to be O(1) time but O(n) space? Give an example
+
+**A:** Yes ✅
+
+**Example:**
+Creating an array of size n filled with zeros.
+
+```js
+const arr = new Array(n).fill(0);
+```
+
+Time: O(1) — just allocate memory reference.
+Space: O(n) — stores n elements.
+
+Another example: allocating a large matrix without iterating to fill it.
+
+#### 23. What does it mean if a function has O(∞)?
+
+**A:**
+This is invalid — Big O notation only describes finite growth rates as `n → ∞`.
+`O(∞)` doesn’t exist; it means the algorithm never terminates or its complexity is undefined (infinite loop or error).
+
+#### 24. Why does Big O only measure asymptotic behavior (not exact runtime)?
+
+**A:**
+Because Big O abstracts away:
+
+- Hardware differences
+- Compiler optimizations
+- Constant factors
+
+*It focuses on how runtime scales with input size `n`, not exact milliseconds.*
+*Big O is a mathematical upper bound, showing performance trends as `n → ∞`.*
+
+✅ **Summary Table**
+
+| #   | Concept                   | Answer Summary                                      |
+| --- | ------------------------- | --------------------------------------------------- |
+| 18  | O(n) vs O(n log n)        | O(n) is faster for large n                          |
+| 19  | O(log n) vs O(1)          | O(log n) may be faster in real-world due to caching |
+| 20  | O(n²) acceptable when     | n is small / runs infrequently                      |
+| 21  | Merge Sort vs Bubble Sort | Merge Sort more efficient for large data            |
+| 22  | O(1) time but O(n) space  | Array initialization example                        |
+| 23  | O(∞) meaning              | Invalid / undefined                                 |
+| 24  | Why asymptotic only       | Focuses on growth, not hardware/runtime             |
 
 ### 🔵 Level 4 — Real-World and Advanced
 

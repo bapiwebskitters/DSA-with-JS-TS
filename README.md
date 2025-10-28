@@ -183,7 +183,7 @@ Matrix Chain Multiplication
 
 ### 🧩 Suggested Learning Path
 
-**Week Focus Area**
+#### Week Focus Area
 
 - 1 Big O, Arrays, Strings
 - 2 Linked List, Stack, Queue
